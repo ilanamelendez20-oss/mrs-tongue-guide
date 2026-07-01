@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Apple iOS / iPad Home Screen Settings -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Mrs. Tongue">
+    
+    <title>Mrs. Tongue at Home • Practice Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap');
+        
+        :root {
+            --teal: #2A9D8F;
+            --teal-dark: #1E7A6E;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
+        }
+
+        .nav-tab {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* Better mobile tab scrolling */
+        #nav-tabs {
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+        }
+        #nav-tabs::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+        
+        .nav-tab.active {
+            color: #1E7A6E;
+            font-weight: 600;
+        }
+        
+        .nav-tab.active:after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #2A9D8F;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .section-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .practice-card {
+            transition: all 0.2s ease;
+        }
+
+        .practice-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+
+        .tab-content {
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .warm-bg {
+            background-color: #FAF7F2;
+        }
+
+        .soft-teal {
+            color: #2A9D8F;
+        }
+
+        .professional-text {
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        .nav-container {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .content-container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .position-item {
+            border-left: 4px solid #2A9D8F;
+        }
+
+        .sound-card {
+            border: 1px solid #E2E8F0;
+        }
+
+        .resource-link {
+            transition: color 0.2s ease;
+        }
+        
+        .resource-link:hover {
+            color: #1E7A6E;
+        }
+
+        .gentle-shadow {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+        }
+    </style>
+</head>
+<body class="warm-bg text-slate-700">
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200">
+        <div class="max-w-screen-xl mx-auto px-6 py-5">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-11 h-11 bg-teal-700 rounded-2xl flex items-center justify-center shadow-inner">
+                        <i class="fa-solid fa-comments text-white text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-semibold tracking-tight text-slate-800">Mrs. Tongue at Home</h1>
+                        <p class="text-sm text-slate-500 -mt-0.5">A supportive guide for speech movement practice</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-x-2 text-sm">
+                    <div class="px-3 py-1.5 bg-teal-50 text-teal-700 rounded-full flex items-center gap-x-2 text-xs font-medium">
+                        <i class="fa-solid fa-heart text-teal-600"></i>
+                        <span>Created with care for parents &amp; SLPs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-6">
+            <div class="flex overflow-x-auto no-scrollbar py-1 -mb-px" id="nav-tabs">
+                <!-- Tabs populated by JS -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-screen-xl mx-auto px-6 py-8">
+        
+        <!-- OVERVIEW -->
+        <div id="overview" class="tab-content">
+            <div class="max-w-3xl">
+                <div class="mb-8">
+                    <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-wider text-teal-700 bg-teal-100 rounded-full">START HERE</span>
+                    <h2 class="text-4xl font-semibold tracking-tighter text-slate-800 mt-3">Understanding Childhood Apraxia of Speech</h2>
+                    <p class="mt-4 text-lg text-slate-600">You're doing important, loving work. Small, consistent steps can make a meaningful difference.</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- What is CAS -->
+                    <div class="bg-white rounded-3xl p-8 gentle-shadow border border-slate-100">
+                        <h3 class="font-semibold text-xl text-slate-800 mb-4 flex items-center gap-x-3">
+                            <i class="fa-solid fa-brain text-teal-600 w-6"></i>
+                            What is Childhood Apraxia of Speech?
+                        </h3>
+                        <div class="prose prose-slate max-w-none text-[15px]">
+                            <p>Childhood apraxia of speech (CAS) is a neurological motor speech disorder. The brain has difficulty planning and coordinating the precise movements of the tongue, lips, and jaw needed for clear speech.</p>
+                            <p class="mt-3">Your child knows what she wants to say, but the motor plan doesn’t translate smoothly to her mouth. It is <strong>not</strong> caused by muscle weakness or intellectual disability.</p>
+                        </div>
+                    </div>
+
+                    <!-- Mrs. Tongue Approach -->
+                    <div class="bg-white rounded-3xl p-8 gentle-shadow border border-slate-100">
+                        <h3 class="font-semibold text-xl text-slate-800 mb-4 flex items-center gap-x-3">
+                            <i class="fa-solid fa-hand-sparkles text-teal-600 w-6"></i>
+                            Mrs. Tongue’s Movement-Based Approach
+                        </h3>
+                        <div class="prose prose-slate max-w-none text-[15px]">
+                            <p>Mrs. Tongue’s technique, created by speech-language pathologist <strong>Susan Dugdale</strong>, focuses on teaching the <em>physical positions</em> and movements the mouth needs to produce sounds.</p>
+                            
+                            <p class="mt-3">Instead of only focusing on the sound the child hears, we help her <strong>feel and see</strong> where her tongue and lips should be. This builds the motor planning skills that are at the core of apraxia.</p>
+                            
+                            <div class="mt-4 p-4 bg-teal-50 rounded-2xl text-sm">
+                                <strong class="text-teal-700">Core idea:</strong> Clear placement + repetition + play = stronger motor plans over time.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Why short practice works -->
+                    <div class="bg-white rounded-3xl p-8 gentle-shadow border border-slate-100">
+                        <h3 class="font-semibold text-xl text-slate-800 mb-4">Why Short, Consistent, Playful Practice Works</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-5 bg-slate-50 rounded-2xl">
+                                <div class="font-semibold text-teal-700 mb-1">Builds muscle memory</div>
+                                <p class="text-sm text-slate-600">Frequent, brief practice strengthens the neural pathways for speech movements more effectively than long, infrequent sessions.</p>
+                            </div>
+                            <div class="p-5 bg-slate-50 rounded-2xl">
+                                <div class="font-semibold text-teal-700 mb-1">Keeps frustration low</div>
+                                <p class="text-sm text-slate-600">Short sessions respect your child’s attention span and emotional regulation, making practice something she can enjoy.</p>
+                            </div>
+                            <div class="p-5 bg-slate-50 rounded-2xl">
+                                <div class="font-semibold text-teal-700 mb-1">Fits real life</div>
+                                <p class="text-sm text-slate-600">5–8 minutes, several times a day is realistic for busy families and leads to better carryover than marathon sessions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOR MOM / CAREGIVER -->
+        <div id="for-mom" class="tab-content hidden">
+            <div class="max-w-3xl">
+                <div class="mb-8">
+                    <h2 class="text-4xl font-semibold tracking-tighter text-slate-800">Guidance for You, Mom</h2>
+                    <p class="mt-3 text-lg text-slate-600">You are your child’s most important practice partner. Here’s how to make home practice effective and sustainable.</p>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Key Principles -->
+                    <div>
+                        <h3 class="font-semibold text-xl mb-4 text-slate-800">Key Principles for Home Practice</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="practice-card bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                                <div class="flex gap-4">
+                                    <div class="w-9 h-9 flex-shrink-0 bg-teal-100 text-teal-700 rounded-2xl flex items-center justify-center">
+                                        <i class="fa-solid fa-clock text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Keep sessions short</div>
+                                        <p class="text-sm mt-1 text-slate-600">Aim for 5–8 minutes. Multiple short sessions beat one long one.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="practice-card bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                                <div class="flex gap-4">
+                                    <div class="w-9 h-9 flex-shrink-0 bg-teal-100 text-teal-700 rounded-2xl flex items-center justify-center">
+                                        <i class="fa-solid fa-mirror text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Use a mirror</div>
+                                        <p class="text-sm mt-1 text-slate-600">Visual feedback helps your child see and feel correct placement.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="practice-card bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                                <div class="flex gap-4">
+                                    <div class="w-9 h-9 flex-shrink-0 bg-teal-100 text-teal-700 rounded-2xl flex items-center justify-center">
+                                        <i class="fa-solid fa-face-smile text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Keep it low-pressure &amp; playful</div>
+                                        <p class="text-sm mt-1 text-slate-600">Celebrate effort. Laughter and connection matter more than perfect sounds.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="practice-card bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                                <div class="flex gap-4">
+                                    <div class="w-9 h-9 flex-shrink-0 bg-teal-100 text-teal-700 rounded-2xl flex items-center justify-center">
+                                        <i class="fa-solid fa-sync text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold">Prioritize consistency</div>
+                                        <p class="text-sm mt-1 text-slate-600">Small daily practice builds skills faster than occasional intense sessions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- When she resists -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 gentle-shadow">
+                        <h3 class="font-semibold text-xl mb-5 text-slate-800">When Your Child Resists or Gets Frustrated</h3>
+                        
+                        <div class="space-y-5 text-[15px]">
+                            <div class="flex gap-4">
+                                <div class="font-mono text-teal-600 font-bold w-5">1</div>
+                                <div><strong>Change the activity</strong> — Switch to a different sound or game immediately. Don’t push through frustration.</div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="font-mono text-teal-600 font-bold w-5">2</div>
+                                <div><strong>Offer choices</strong> — “Would you like to do mirror faces or blow bubbles today?”</div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="font-mono text-teal-600 font-bold w-5">3</div>
+                                <div><strong>Make it a game</strong> — Turn practice into “Mrs. Tongue’s adventure” or treasure hunt.</div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="font-mono text-teal-600 font-bold w-5">4</div>
+                                <div><strong>End on a win</strong> — Finish with something she does well or enjoys. Leave her wanting more.</div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="font-mono text-teal-600 font-bold w-5">5</div>
+                                <div><strong>Take a break</strong> — It’s okay to pause for the day. Tomorrow is a new opportunity.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 p-4 bg-amber-50 border border-amber-100 rounded-2xl text-sm text-amber-700">
+                            <strong>Remember:</strong> Some days will be harder than others. That doesn’t mean you’re doing anything wrong. Your calm, consistent presence is what matters most.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TONGUE & LIP POSITIONING -->
+        <div id="positioning" class="tab-content hidden">
+            <div class="max-w-3xl">
+                <div class="mb-8">
+                    <h2 class="text-4xl font-semibold tracking-tighter text-slate-800">Tongue &amp; Lip Positioning</h2>
+                    <p class="mt-3 text-lg text-slate-600">Clear placement is the foundation. Practice these positions together in front of a mirror so your child can see and feel what her mouth is doing.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Lips Together -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 gentle-shadow position-item">
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-2xl flex-shrink-0 flex items-center justify-center">
+                                <i class="fa-solid fa-lips text-3xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-x-3">
+                                    <h3 class="font-semibold text-2xl text-slate-800">Lips Together</h3>
+                                    <span class="px-3 py-1 text-xs font-medium bg-teal-100 text-teal-700 rounded-full">p • b • m</span>
+                                </div>
+                                <p class="mt-3 text-[15px] text-slate-600">Gently press your lips together. For <strong>p</strong> and <strong>b</strong>, release with a small puff of air. For <strong>m</strong>, keep lips closed and let sound come through your nose (hum).</p>
+                                
+                                <div class="mt-4 text-sm">
+                                    <div class="font-medium text-teal-700 mb-1">Mirror Tip:</div>
+                                    <p>Watch your lips come together and then open. Try making a kissing motion first, then add the sound.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tongue Tip -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 gentle-shadow position-item">
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-2xl flex-shrink-0 flex items-center justify-center">
+                                <i class="fa-solid fa-arrow-up text-3xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-x-3">
+                                    <h3 class="font-semibold text-2xl text-slate-800">Tongue Tip Behind Upper Teeth</h3>
+                                    <span class="px-3 py-1 text-xs font-medium bg-teal-100 text-teal-700 rounded-full">t • d • n</span>
+                                </div>
+                                <p class="mt-3 text-[15px] text-slate-600">Place the very tip of your tongue just behind your upper front teeth (the bumpy ridge). For <strong>t</strong> and <strong>d</strong>, tap and release quickly. For <strong>n</strong>, keep the tongue in place and let air flow through your nose.</p>
+                                
+                                <div class="mt-4 text-sm">
+                                    <div class="font-medium text-teal-700 mb-1">Mirror Tip:</div>
+                                    <p>Look in the mirror and see the tongue tip touch the spot right behind the teeth. It should feel like a gentle “tap” for t/d.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Back of Tongue -->
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 gentle-shadow position-item">
+                        <div class="flex items-start gap-5">
+                            <div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-2xl flex-shrink-0 flex items-center justify-center">
+                                <i class="fa-solid fa-arrow-up-from-water-pump text-3xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-x-3">
+                                    <h3 class="font-semibold text-2xl text-slate-800">Back of Tongue Up</h3>
+                                    <span class="px-3 py-1 text-xs font-medium bg-teal-100 text-teal-700 rounded-full">k • g</span>
+                                </div>
+                                <p class="mt-3 text-[15px] text-slate-600">Raise the back of your tongue so it touches the soft part of the roof of your mouth (velum). For <strong>k</strong> and <strong>g</strong>, let it “pop” off quickly with air.</p>
+                                
+                                <div class="mt-4 text-sm">
+                                    <div class="font-medium text-teal-700 mb-1">Mirror Tip:</div>
+                                    <p>This one is harder to see. Feel the back of your tongue rise. You can practice saying “ah” then lifting the back to make a “k” sound.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-6 bg-white border border-teal-100 rounded-3xl">
+                    <div class="flex gap-4 items-start">
+                        <i class="fa-solid fa-book text-teal-600 mt-1 text-xl"></i>
+                        <div>
+                            <p class="font-medium">Beautiful visuals &amp; story-based practice</p>
+                            <p class="text-sm mt-1">Download Susan Dugdale’s free “Mrs. Tongue Does Her Housework” printable for charming illustrations and a full story to practice these movements.</p>
+                            <a href="https://www.susandugdale.com/mrs-tongue-does-her-housework/" target="_blank" 
+                               class="inline-flex items-center gap-x-2 mt-3 text-sm font-medium text-teal-700 hover:text-teal-800">
+                                Visit Susan Dugdale’s site for the printable <i class="fa-solid fa-external-link-alt text-xs ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOUND PRACTICE -->
+        <div id="sound-practice" class="tab-content hidden">
+            <div class="max-w-4xl">
+                <div class="mb-8">
+                    <h2 class="text-4xl font-semibold tracking-tighter text-slate-800">Sound Practice</h2>
+                    <p class="mt-3 text-lg text-slate-600">Focus on one sound group at a time. Use the mirror, then move into words and play.</p>
+                    
+                    <div class="mt-4 p-4 bg-teal-50 border border-teal-100 rounded-2xl text-sm text-teal-700">
+                        <strong>Tip:</strong> Click the <strong>Listen</strong> button to hear the sounds and words spoken clearly. 
+                        Listen together first, then have your child watch your mouth in the mirror and try to copy the placement and sound. 
+                        The computer voice may not have perfect natural intonation, but it’s clear and consistent for practice.
+                    </div>
+                </div>
+
+                <!-- Why these sounds first -->
+                <div class="mb-8 p-6 bg-white border border-teal-100 rounded-3xl text-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="text-teal-600 mt-0.5">
+                            <i class="fa-solid fa-lightbulb fa-lg"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-teal-700 mb-2">Why focus on these sounds first?</div>
+                            <p class="text-slate-600">These three placements — lips together, tongue tip behind the teeth, and back of the tongue — are the building blocks for many early words. They are the most visible in a mirror and easiest for young children to feel and control.</p>
+                            <p class="mt-2 text-slate-600">Other sounds (such as /s/, /f/, /sh/, /l/, /r/, and most vowels) involve finer or more complex tongue movements. We start here to build strong motor plans and early success. Your child’s speech-language pathologist will guide when and how to expand to the full range of sounds based on her progress.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    
+                    <!-- p/b/m -->
+                    <div class="sound-card bg-white rounded-3xl p-7 gentle-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-x-3">
+                                <span class="text-3xl font-semibold text-teal-700">p / b / m</span>
+                                <button onclick="speak('Practice p, b, and m sounds. Lips together. Example words: mama, papa, ball, milk.')" 
+                                        class="flex items-center gap-x-1.5 px-3 py-1 text-xs bg-teal-100 hover:bg-teal-200 text-teal-700 rounded-2xl transition-colors">
+                                    <i class="fa-solid fa-volume-up"></i>
+                                    <span>Listen</span>
+                                </button>
+                            </div>
+                            <span class="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full font-medium">Lips together</span>
+                        </div>
+                        
+                        <div class="text-sm space-y-4">
+                            <div>
+                                <div class="font-medium text-slate-700 mb-2">Example words with sounds</div>
+                                <div class="space-y-1.5 text-sm">
+                                    <div><strong>m</strong>ama — mah-mah</div>
+                                    <div><strong>p</strong>apa — pah-pah</div>
+                                    <div><strong>b</strong>all — bawl</div>
+                                    <div><strong>m</strong>ilk — milk</div>
+                                </div>
+                                <div class="text-[10px] text-slate-500 mt-2">Practice the consonant placement + the vowel in each word.</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-medium text-slate-700 mb-1.5">Simple ways to practice</div>
+                                <ul class="text-xs space-y-1 text-slate-600">
+                                    <li>• Blow kisses while saying “p-p-p”</li>
+                                    <li>• Hum “mmm” like a happy song</li>
+                                    <li>• “Pop” bubbles with your lips</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- t/d/n -->
+                    <div class="sound-card bg-white rounded-3xl p-7 gentle-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-x-3">
+                                <span class="text-3xl font-semibold text-teal-700">t / d / n</span>
+                                <button onclick="speak('Practice t, d, and n sounds. Tongue tip behind upper teeth. Example words: teddy, daddy, no, toe.')" 
+                                        class="flex items-center gap-x-1.5 px-3 py-1 text-xs bg-teal-100 hover:bg-teal-200 text-teal-700 rounded-2xl transition-colors">
+                                    <i class="fa-solid fa-volume-up"></i>
+                                    <span>Listen</span>
+                                </button>
+                            </div>
+                            <span class="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full font-medium">Tongue tip</span>
+                        </div>
+                        
+                        <div class="text-sm space-y-4">
+                            <div>
+                                <div class="font-medium text-slate-700 mb-2">Example words with sounds</div>
+                                <div class="space-y-1.5 text-sm">
+                                    <div><strong>t</strong>eddy — teh-dee</div>
+                                    <div><strong>d</strong>addy — dad-ee</div>
+                                    <div><strong>n</strong>o — noh</div>
+                                    <div><strong>t</strong>oe — toh</div>
+                                </div>
+                                <div class="text-[10px] text-slate-500 mt-2">Practice the consonant placement + the vowel in each word.</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-medium text-slate-700 mb-1.5">Simple ways to practice</div>
+                                <ul class="text-xs space-y-1 text-slate-600">
+                                    <li>• Tap tongue behind teeth saying “t-t-t”</li>
+                                    <li>• Make “n-n-n” like a motorboat</li>
+                                    <li>• Point to body parts: “toe”, “nose”, “tummy”</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- k/g -->
+                    <div class="sound-card bg-white rounded-3xl p-7 gentle-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-x-3">
+                                <span class="text-3xl font-semibold text-teal-700">k / g</span>
+                                <button onclick="speak('Practice k and g sounds. Back of tongue up. Example words: go, key, car, good.')" 
+                                        class="flex items-center gap-x-1.5 px-3 py-1 text-xs bg-teal-100 hover:bg-teal-200 text-teal-700 rounded-2xl transition-colors">
+                                    <i class="fa-solid fa-volume-up"></i>
+                                    <span>Listen</span>
+                                </button>
+                            </div>
+                            <span class="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full font-medium">Back of tongue</span>
+                        </div>
+                        
+                        <div class="text-sm space-y-4">
+                            <div>
+                                <div class="font-medium text-slate-700 mb-2">Example words with sounds</div>
+                                <div class="space-y-1.5 text-sm">
+                                    <div><strong>g</strong>o — goh</div>
+                                    <div><strong>k</strong>ey — kee</div>
+                                    <div><strong>k</strong>ar — kar</div>
+                                    <div><strong>g</strong>ood — good</div>
+                                </div>
+                                <div class="text-[10px] text-slate-500 mt-2">Practice the consonant placement + the vowel in each word.</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-medium text-slate-700 mb-1.5">Simple ways to practice</div>
+                                <ul class="text-xs space-y-1 text-slate-600">
+                                    <li>• “Cough” gently to feel back of tongue</li>
+                                    <li>• Say “k-k-k” like a happy chicken</li>
+                                    <li>• Practice “go” while pushing a toy car</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-xs text-slate-500 bg-white p-4 rounded-2xl border border-slate-100">
+                    Start with the sounds your child can already approximate. Success builds confidence and motor memory. Move to new sounds only when she feels ready and your SLP recommends it.
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVITIES & GAMES -->
+        <div id="activities" class="tab-content hidden">
+            <div class="max-w-4xl">
+                <div class="mb-8">
+                    <h2 class="text-4xl font-semibold tracking-tighter text-slate-800">Activities &amp; Games</h2>
+                    <p class="mt-3 text-lg text-slate-600">Keep practice fun and embedded in play. Here are simple, effective activities you can do at home.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    
+                    <div class="practice-card bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                        <div class="font-semibold flex items-center gap-x-3 mb-3">
+                            <span class="text-teal-600"><i class="fa-solid fa-mirror fa-lg"></i></span>
+                            <span>Mirror Magic</span>
+                        </div>
+                        <p class="text-sm text-slate-600">Sit together in front of a mirror. Make exaggerated faces and movements together — big smiles, kisses, tongue taps. Narrate: “Look how Mrs. Tongue goes up!”</p>
+                    </div>
+                    
+                    <div class="practice-card bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                        <div class="font-semibold flex items-center gap-x-3 mb-3">
+                            <span class="text-teal-600"><i class="fa-solid fa-wind fa-lg"></i></span>
+                            <span>Bubble Time</span>
+                        </div>
+                        <p class="text-sm text-slate-600">Blow bubbles together. Practice “p-p-p” and “b-b-b” as you pop them or blow more. Great for lip rounding and controlled airflow.</p>
+                    </div>
+                    
+                    <div class="practice-card bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                        <div class="font-semibold flex items-center gap-x-3 mb-3">
+                            <span class="text-teal-600"><i class="fa-solid fa-paw fa-lg"></i></span>
+                            <span>Animal Sounds</span>
+                        </div>
+                        <p class="text-sm text-slate-600">Use animal sounds with clear mouth movements: “mmmmm” (cow), tongue clicks, “k-k-k” (chicken). Make it silly and joyful.</p>
+                    </div>
+                    
+                    <div class="practice-card bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                        <div class="font-semibold flex items-center gap-x-3 mb-3">
+                            <span class="text-teal-600"><i class="fa-solid fa-gem fa-lg"></i></span>
+                            <span>Treasure Hunt</span>
+                        </div>
+                        <p class="text-sm text-slate-600">Hide small toys or stickers. Each time your child finds one, she says a target word or sound to “unlock” the treasure.</p>
+                    </div>
+                    
+                    <div class="practice-card bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                        <div class="font-semibold flex items-center gap-x-3 mb-3">
+                            <span class="text-teal-600"><i class="fa-solid fa-music fa-lg"></i></span>
+                            <span>Song &amp; Rhyme Time</span>
+                        </div>
+                        <p class="text-sm text-slate-600">Sing simple songs that repeat target sounds (“Pat-a-cake”, “Row Row Row Your Boat”, or made-up rhymes). Movement + rhythm helps.</p>
+                    </div>
+                    
+                    <div class="practice-card bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                        <div class="font-semibold flex items-center gap-x-3 mb-3">
+                            <span class="text-teal-600"><i class="fa-solid fa-book-open fa-lg"></i></span>
+                            <span>Mrs. Tongue Story Time</span>
+                        </div>
+                        <p class="text-sm text-slate-600">Use Susan Dugdale’s printable story. Act out the movements together as you read. The story makes placement memorable and fun.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAILY ROUTINE -->
+        <div id="daily-routine" class="tab-content hidden">
+            <div class="max-w-3xl">
+                <div class="mb-8">
+                    <h2 class="text-4xl font-semibold tracking-tighter text-slate-800">A Realistic Daily Rhythm</h2>
+                    <p class="mt-3 text-lg text-slate-600">You don’t need a rigid schedule. The goal is 3–5 short moments spread through the day. 5–8 minutes each is enough.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 gentle-shadow">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            
+                            <!-- Morning -->
+                            <div>
+                                <div class="flex items-center gap-x-3 mb-4">
+                                    <div class="w-8 h-8 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-sun"></i>
+                                    </div>
+                                    <div class="font-semibold text-lg">Morning</div>
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-2">
+                                    <p>5 minutes while getting dressed or at the breakfast table.</p>
+                                    <p class="text-xs">Quick mirror faces + 2–3 target words before the day gets busy.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Afternoon -->
+                            <div>
+                                <div class="flex items-center gap-x-3 mb-4">
+                                    <div class="w-8 h-8 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-cloud-sun"></i>
+                                    </div>
+                                    <div class="font-semibold text-lg">Afternoon</div>
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-2">
+                                    <p>5–8 minutes during playtime or after nap.</p>
+                                    <p class="text-xs">One focused activity (bubbles, treasure hunt, or story time).</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Evening -->
+                            <div>
+                                <div class="flex items-center gap-x-3 mb-4">
+                                    <div class="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fa-solid fa-moon"></i>
+                                    </div>
+                                    <div class="font-semibold text-lg">Evening</div>
+                                </div>
+                                <div class="text-sm text-slate-600 space-y-2">
+                                    <p>5 minutes as part of the bedtime routine.</p>
+                                    <p class="text-xs">Calm mirror time or reading with gentle sound emphasis before bed.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white border border-teal-100 rounded-3xl text-sm">
+                        <div class="font-medium text-teal-700 mb-2">Flexible &amp; forgiving</div>
+                        <p>If one session gets skipped, that’s okay. The consistency of showing up most days matters far more than perfection. Listen to your child’s energy and adjust.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- APPENDIX: FULL ALPHABET -->
+        <div id="appendix" class="tab-content hidden">
+            <div class="max-w-4xl">
+                <div class="mb-8">
+                    <h2 class="text-4xl font-semibold tracking-tighter text-slate-800">Appendix: Working Toward the Full Alphabet</h2>
+                    <p class="mt-3 text-lg text-slate-600">While the early placements (lips together, tongue tip, back of tongue) are the foundation we focus on first, many children with apraxia of speech eventually work on the complete set of English sounds — including later consonants and all the vowels.</p>
+                </div>
+
+                <div class="space-y-10">
+                    
+                    <!-- Later Consonants -->
+                    <div>
+                        <h3 class="font-semibold text-2xl text-slate-800 mb-4 flex items-center gap-x-3">
+                            <i class="fa-solid fa-font text-teal-600"></i>
+                            <span>Later-Developing Consonants</span>
+                        </h3>
+                        
+                        <p class="text-sm text-slate-600 mb-6">These sounds generally require more precise tongue shaping, airflow, or coordination. They are often introduced after the foundational placements are stronger.</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            
+                            <div class="bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                                <div class="font-semibold mb-3 text-teal-700">Fricatives (airflow sounds)</div>
+                                <div class="text-sm space-y-2 text-slate-600">
+                                    <div><strong>f / v</strong> — lip to teeth (fan, van)</div>
+                                    <div><strong>s / z</strong> — tongue tip near teeth with hissing (sun, zoo)</div>
+                                    <div><strong>sh / zh</strong> — lips rounded, tongue blade (shoe, measure)</div>
+                                    <div><strong>th</strong> (voiced &amp; voiceless) — tongue between teeth (this, think)</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                                <div class="font-semibold mb-3 text-teal-700">Affricates &amp; Other</div>
+                                <div class="text-sm space-y-2 text-slate-600">
+                                    <div><strong>ch / j</strong> — quick stop + fricative (chair, jump)</div>
+                                    <div><strong>l</strong> — tongue tip touches alveolar ridge with sides open (light, ball)</div>
+                                    <div><strong>r</strong> — complex tongue bunching or retroflex (red, car) — often one of the last</div>
+                                    <div><strong>h, w, y</strong> — glides (hat, water, yes)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vowels -->
+                    <div>
+                        <h3 class="font-semibold text-2xl text-slate-800 mb-4 flex items-center gap-x-3">
+                            <i class="fa-solid fa-volume-up text-teal-600"></i>
+                            <span>Vowels</span>
+                        </h3>
+                        
+                        <div class="bg-white p-7 rounded-3xl border border-slate-100 gentle-shadow mb-6">
+                            <p class="text-sm text-slate-600">Vowels are “open” sounds shaped by the position of the tongue (high / mid / low and front / back) and whether the lips are rounded or spread. Unlike consonants, there is no complete contact or blockage of airflow.</p>
+                            
+                            <p class="mt-3 text-sm text-slate-600">Because they require sustained shaping and smooth transitions rather than clear “placements,” vowels are often practiced through:</p>
+                            <ul class="mt-2 text-sm text-slate-600 list-disc pl-5 space-y-1">
+                                <li>Sustained single vowels (“ahhh”, “eeee”, “oooo”)</li>
+                                <li>Simple consonant + vowel combinations (ba, bee, boo, bye)</li>
+                                <li>Songs, animal sounds, and exaggerated play</li>
+                            </ul>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div class="bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                                <div class="font-semibold mb-3 text-teal-700">Short Vowels (examples)</div>
+                                <div class="text-sm text-slate-600 space-y-1.5">
+                                    <div><strong>/æ/</strong> — cat, apple, hat</div>
+                                    <div><strong>/ɛ/</strong> — bed, egg, head</div>
+                                    <div><strong>/ɪ/</strong> — sit, it, fish</div>
+                                    <div><strong>/ʌ/</strong> — cup, up, sun</div>
+                                    <div><strong>/ɑ/</strong> or /ɒ/ — hot, on, dog</div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white p-6 rounded-3xl border border-slate-100 gentle-shadow">
+                                <div class="font-semibold mb-3 text-teal-700">Long Vowels &amp; Diphthongs (examples)</div>
+                                <div class="text-sm text-slate-600 space-y-1.5">
+                                    <div><strong>/iː/</strong> — bee, eat, see</div>
+                                    <div><strong>/eɪ/</strong> — day, play, cake</div>
+                                    <div><strong>/aɪ/</strong> — my, high, bye</div>
+                                    <div><strong>/oʊ/</strong> — go, no, boat</div>
+                                    <div><strong>/uː/</strong> — moon, blue, shoe</div>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-3">Diphthongs are gliding vowels (the mouth moves during the sound).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-teal-50 border border-teal-100 rounded-3xl text-sm">
+                        <strong class="text-teal-700">Important note:</strong> Every child’s sound system develops in a unique order. Your speech-language pathologist will create a personalized plan based on your daughter’s current strengths, motor planning needs, and functional communication goals. The appendix above is for general information only.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESOURCES -->
+        <div id="resources" class="tab-content hidden">
+            <div class="max-w-3xl">
+                <div class="mb-8">
+                    <h2 class="text-4xl font-semibold tracking-tighter text-slate-800">Trusted Resources</h2>
+                    <p class="mt-3 text-lg text-slate-600">These are high-quality, parent-friendly resources from reputable organizations.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <a href="https://www.asha.org/public/speech/disorders/childhood-apraxia-of-speech/" target="_blank"
+                       class="group flex items-start gap-5 p-6 bg-white rounded-3xl border border-slate-100 hover:border-teal-200 transition-all gentle-shadow resource-link">
+                        <div class="w-10 h-10 flex-shrink-0 bg-teal-100 text-teal-700 rounded-2xl flex items-center justify-center">
+                            <i class="fa-solid fa-globe text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold group-hover:text-teal-700">American Speech-Language-Hearing Association (ASHA)</div>
+                            <div class="text-sm text-slate-600 mt-1">Clear, evidence-based information on childhood apraxia of speech, signs, diagnosis, and treatment.</div>
+                            <div class="text-xs text-teal-600 mt-2 flex items-center gap-x-1">Visit ASHA page <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.apraxia-kids.org/" target="_blank"
+                       class="group flex items-start gap-5 p-6 bg-white rounded-3xl border border-slate-100 hover:border-teal-200 transition-all gentle-shadow resource-link">
+                        <div class="w-10 h-10 flex-shrink-0 bg-teal-100 text-teal-700 rounded-2xl flex items-center justify-center">
+                            <i class="fa-solid fa-child text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold group-hover:text-teal-700">Apraxia Kids</div>
+                            <div class="text-sm text-slate-600 mt-1">Excellent parent support organization with resources, webinars, and community for families navigating apraxia.</div>
+                            <div class="text-xs text-teal-600 mt-2 flex items-center gap-x-1">Visit Apraxia Kids <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></div>
+                        </div>
+                    </a>
+
+                    <div class="group flex items-start gap-5 p-6 bg-white rounded-3xl border border-slate-100 hover:border-teal-200 transition-all gentle-shadow">
+                        <div class="w-10 h-10 flex-shrink-0 bg-teal-100 text-teal-700 rounded-2xl flex items-center justify-center">
+                            <i class="fa-solid fa-book text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold">Susan Dugdale — Mrs. Tongue Resources</div>
+                            <div class="text-sm text-slate-600 mt-1">Free printable story and materials for the Mrs. Tongue movement-based approach. Highly recommended by many families and SLPs.</div>
+                            <a href="https://www.susandugdale.com/" target="_blank" 
+                               class="text-xs text-teal-600 mt-2 inline-flex items-center gap-x-1 hover:underline">Visit Susan Dugdale’s website for free printables <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-5 bg-slate-50 rounded-2xl text-xs text-slate-500 border border-slate-100">
+                    <strong>Important:</strong> This guide is a supportive resource and does not replace professional speech-language therapy. Please work closely with your child’s SLP for personalized goals and strategies.
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white py-8 mt-12">
+        <div class="max-w-screen-xl mx-auto px-6 text-center text-xs text-slate-400">
+            Made with care for parents walking this journey. • This is not medical advice. Always consult your speech-language pathologist.
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent-teal', '#2A9D8F');
+        }
+
+        // Tab Navigation
+        const tabs = [
+            { id: 'overview', label: 'Overview', icon: 'fa-home' },
+            { id: 'for-mom', label: 'For Mom', icon: 'fa-user-heart' },
+            { id: 'positioning', label: 'Positioning', icon: 'fa-hand-sparkles' },
+            { id: 'sound-practice', label: 'Sound Practice', icon: 'fa-volume-up' },
+            { id: 'activities', label: 'Activities', icon: 'fa-gamepad' },
+            { id: 'daily-routine', label: 'Daily Routine', icon: 'fa-clock' },
+            { id: 'appendix', label: 'Appendix', icon: 'fa-font' },
+            { id: 'resources', label: 'Resources', icon: 'fa-book' }
+        ];
+
+        function createTabs() {
+            const navContainer = document.getElementById('nav-tabs');
+            navContainer.innerHTML = '';
+            
+            tabs.forEach((tab, index) => {
+                const button = document.createElement('button');
+                button.className = `nav-tab flex-shrink-0 px-5 py-3 text-sm font-medium flex items-center gap-x-2 text-slate-600 hover:text-slate-800 whitespace-nowrap ${index === 0 ? 'active' : ''}`;
+                button.innerHTML = `
+                    <i class="fa-solid ${tab.icon} text-xs opacity-70"></i>
+                    <span>${tab.label}</span>
+                `;
+                
+                button.addEventListener('click', () => {
+                    switchTab(tab.id, button);
+                });
+                
+                navContainer.appendChild(button);
+            });
+        }
+
+        function switchTab(tabId, activeButton) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Show selected content
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+            
+            // Update active tab styles
+            document.querySelectorAll('.nav-tab').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn === activeButton) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Scroll to top of content on mobile
+            if (window.innerWidth < 768) {
+                window.scrollTo({ top: 180, behavior: 'smooth' });
+            }
+        }
+
+        // Initialize first tab as active
+        function initializeFirstTab() {
+            const firstTab = document.querySelector('.nav-tab');
+            if (firstTab) {
+                firstTab.classList.add('active');
+            }
+            
+            // Show first content
+            const firstContent = document.getElementById('overview');
+            if (firstContent) {
+                firstContent.classList.remove('hidden');
+            }
+        }
+
+        // Keyboard navigation for tabs
+        function addKeyboardSupport() {
+            document.addEventListener('keydown', function(e) {
+                if (e.key === '/' && document.activeElement.tagName === 'BODY') {
+                    e.preventDefault();
+                    const firstTab = document.querySelector('.nav-tab');
+                    if (firstTab) firstTab.focus();
+                }
+            });
+            
+            // Allow arrow key navigation between tabs
+            const navTabs = document.getElementById('nav-tabs');
+            navTabs.addEventListener('keydown', function(e) {
+                const currentTab = document.activeElement;
+                if (!currentTab.classList.contains('nav-tab')) return;
+                
+                const allTabs = Array.from(navTabs.children);
+                const currentIndex = allTabs.indexOf(currentTab);
+                
+                if (e.key === 'ArrowRight' && currentIndex < allTabs.length - 1) {
+                    e.preventDefault();
+                    allTabs[currentIndex + 1].focus();
+                    allTabs[currentIndex + 1].click();
+                }
+                
+                if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    e.preventDefault();
+                    allTabs[currentIndex - 1].focus();
+                    allTabs[currentIndex - 1].click();
+                }
+            });
+        }
+
+        // Make sure content is responsive and nice on mobile
+        function enhanceMobileExperience() {
+            // Add subtle scroll hint on nav if needed
+            const nav = document.getElementById('nav-tabs');
+            if (nav.scrollWidth > nav.clientWidth) {
+                nav.style.borderBottom = '1px solid #e2e8f0';
+            }
+        }
+
+        // Initialize everything
+        function init() {
+            initializeTailwind();
+            createTabs();
+            initializeFirstTab();
+            addKeyboardSupport();
+            enhanceMobileExperience();
+        }
+
+        // Text-to-Speech function
+        function speak(text) {
+            if (!('speechSynthesis' in window)) {
+                alert("Sorry, your browser doesn't support speech. Please try on a newer phone, tablet, or computer.");
+                return;
+            }
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = 0.9;   // Slightly slower for clarity
+            utterance.pitch = 1.0;
+            utterance.volume = 1.0;
+            
+            // Cancel any previous speech
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Boot the app
+        window.onload = init;
+    </script>
+</body>
+</html>
